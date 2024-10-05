@@ -1,0 +1,1901 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Thiago Cicogna</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="shortcut icon" href="./assets/svg/logo-branco.svg" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+
+        <style>
+            :root {
+                        --primary-color: #f6f9fd;
+                        --primary-color-opac: #f4f4f51a;
+                        --secondary-color: #2e528e;
+                        --secondary-color-opac: #2e518ead;
+                        --secondary-color-light: #5570a067;
+        
+                    }
+        
+                    ::selection {
+                        color: var(--primary-color);
+                        background: var(--secondary-color);
+                    }
+        
+                    #scroll-container {
+                        overflow-x: hidden;
+                        /* Oculta a barra de rolagem horizontal por padrão */
+                    }
+        
+                    /* width */
+                    ::-webkit-scrollbar {
+                        width: 4px;
+                        height: 6px;
+                    }
+        
+                    /* Track */
+                    ::-webkit-scrollbar-track {
+                        background: transparent;
+        
+                        border: 5px solid transparent;
+                        border-radius: 2rem;
+                    }
+        
+                    /* Handle */
+                    ::-webkit-scrollbar-thumb {
+                        background: var(--secondary-color-light);
+                        border: 5px solid transparent;
+                        border-radius: 2rem;
+                        transition: 1s ease-in;
+                    }
+        
+                    /* Handle on hover */
+                    ::-webkit-scrollbar-thumb:hover {
+                        border: 5px solid transparent;
+                        background-color: var(--secondary-color);
+                    }
+        
+                    /* Exibe a barra de rolagem ao passar o mouse */
+                    #scroll-container.show-scroll::-webkit-scrollbar {
+                        display: block;
+                        /* Mostra a barra de rolagem quando a classe show-scroll é adicionada */
+                    }
+        
+                    .timeline {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: relative;
+                        background-color: var(--secondary-color);
+                        color: white;
+                    }
+        
+                    .timeline::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        height: 6px;
+                        background-color: white;
+                        z-index: 1;
+                    }
+        
+                    .timeline-item {
+                        position: relative;
+                        text-align: center;
+                        z-index: 2;
+                    }
+        
+                    .timeline-item .circle {
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 50%;
+                        background-color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 10px;
+                        transition: background-color 0.3s, color 0.3s;
+                    }
+        
+                    .timeline-item i {
+                        font-size: 30px;
+                        color: var(--secondary-color);
+                        transition: color 0.3s;
+                    }
+        
+                    .timeline-item.active .circle {
+                        background-color: var(--secondary-color);
+                        -webkit-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                        -moz-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                        box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                    }
+        
+                    .timeline-item.active i {
+                        color: white;
+                    }
+        
+                    .timeline-item span {
+                        display: block;
+                        font-size: 18px;
+                    }
+        
+                    .year {
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                    }
+        
+                    .timeline-item:hover .circle {
+                        background-color: var(--secondary-color);
+                        cursor: pointer;
+                        -webkit-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                        -moz-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                        box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+                    }
+        
+                    .timeline-item:hover i {
+                        color: white;
+                    }
+        
+                    .content-tab {
+                        display: none;
+                        padding: 20px;
+                        color: #333;
+                        margin-top: 20px;
+                        border-radius: 10px;
+                    }
+        
+                    .content-tab.active {
+                        display: block;
+                    }
+        
+        
+        
+                    .btn:active,
+                    .btn.active {
+                        outline: 2px solid var(--primary-color-opac);
+                        background-color: var(--primary-color);
+                        color: var(--secondary-color) !important;
+                        background: var(--secondary-color);
+                        border: 1px solid var(--secondary-color);
+                    }
+        
+        
+        
+                    a {
+                        color: var(--secondary-color);
+                    }
+        
+                    html {
+                        scroll-behavior: smooth;
+                    }
+        
+                    i {
+                        cursor: none !important;
+                    }
+        
+                    /* Estilos gerais */
+                    body {
+                        background-color: var(--primary-color);
+                        color: var(--secondary-color) !important;
+                        position: relative;
+                        z-index: 1;
+                    }
+        
+                    .dropdown-toggle::after {
+                        display: none;
+                    }
+        
+                    .dropdown-toggle i {
+                        transition: transform 500ms ease;
+                        margin-right: 8px;
+                    }
+        
+                    .rotate-icon {
+                        transform: rotate(90deg);
+                    }
+        
+        
+                    .dropdown-menu {
+                        min-width: 5rem;
+                    }
+        
+                    .dropdown-item:hover {
+                        background-color: var(--secondary-color);
+                        color: var(--primary-color);
+                    }
+        
+                    .btm_bar::after {
+                        content: '';
+                        display: block;
+                        width: 100px;
+                        height: 2px;
+                        background-color: var(--secondary-color);
+                        margin-top: 2rem;
+                    }
+        
+        
+                    .image-container {
+                        width: 100%;
+                        /* Permite que o contêiner seja responsivo */
+                        max-width: 720px;
+                        /* Largura máxima desejada */
+                        height: auto;
+                        /* Altura automática para manter proporções */
+                        position: relative;
+                        /* Para posicionamento relativo */
+                        overflow: hidden;
+                        /* Oculta partes da imagem que saem do contêiner */
+                    }
+        
+                    .image-container img {
+                        width: 100%;
+                        /* Faz a imagem ocupar toda a largura do contêiner */
+                        height: 250px;
+                        /* Altura fixa */
+                        object-fit: cover;
+                        /* Mantém as proporções e cobre o contêiner */
+                        position: relative;
+                        /* Para um melhor controle de layout */
+                    }
+        
+                    .btn-outline-nightblue {
+                        border: 1px solid var(--secondary-color);
+                        color: var(--secondary-color);
+                    }
+        
+                    .btn-outline-nightblue:hover {
+                        background-color: var(--secondary-color);
+                        color: var(--primary-color);
+                    }
+        
+                    .right-line {
+                        border-right: 2px solid var(--secondary-color);
+                    }
+        
+                    .no-select {
+                        user-select: none;
+                        /* Evita a seleção de texto */
+                    }
+        </style>
+        
+        
+        <style>
+            /* Bloco Certificados */
+                    .certificados {
+                        background-color: var(--secondary-color);
+                        color: var(--primary-color);
+                    }
+        
+                    .certificados__container {
+                        padding: 40px 0 40px 5px;
+                        display: grid;
+                        grid-auto-flow: column;
+                        grid-auto-columns: 1fr;
+                        gap: 20px;
+                        overflow-x: auto;
+                        scroll-behavior: smooth;
+                    }
+        
+                    .certificados__left-container {
+                        padding: 20px;
+                        background-color: #f8f9fa;
+                        border-right: 1px solid #dee2e6;
+                    }
+        
+                    /* Media Queries para Responsividade */
+                    @media (min-width: 576px) {
+                        .certificados__container {
+                            padding: 40px 0 40px 35px;
+                        }
+                    }
+        
+                    @media (min-width: 768px) {
+                        .certificados__container {
+                            padding: 40px 0 40px 40px;
+                        }
+                    }
+        
+                    @media (min-width: 992px) {
+                        .certificados__container {
+                            padding: 40px 0 40px 50px;
+                        }
+                    }
+        
+                    @media (min-width: 1200px) {
+                        .certificados__container {
+                            padding: 40px 0 40px 6vw;
+                        }
+                    }
+        
+                    @media (min-width: 1400px) {
+                        .certificados__container {
+                            padding: 40px 0 40px 9vw;
+                        }
+                    }
+        
+                    /* Bloco Card */
+                    .certificados__card {
+                        background-color: #4a6d9e;
+                        color: white;
+                        border-radius: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        padding: 20px;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        height: auto;
+                        min-width: 350px;
+                    }
+        
+                    .certificados__card:hover {
+                        transform: translateY(-10px);
+                        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.075);
+                    }
+        
+                    .certificados__card-body {
+                        background-image: url('./assets/svg/certify.svg');
+                        background-repeat: no-repeat;
+                        background-position: right top;
+        
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        flex-grow: 1;
+                    }
+        
+                    .certificados__card-title {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        margin-bottom: 10px;
+                        line-height: 1.3;
+                    }
+        
+                    .certificados__card-text {
+                        font-size: 0.9rem;
+                        margin-bottom: 10px;
+                        white-space: normal;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        word-break: break-word;
+                    }
+        
+                    .certificados__card-text small {
+                        display: block;
+                        font-size: 0.8rem;
+                        margin-bottom: 5px;
+                    }
+        
+                    .footer {
+                        background-color: #f8f9fa;
+                        /* Cor de fundo do footer */
+                        padding: 20px 0;
+                        /* Espaçamento em cima e embaixo */
+                        text-align: center;
+                        /* Centraliza o texto */
+                    }
+        
+                    .footer-logo {
+                        max-width: 150px;
+                        /* Largura máxima do logo */
+                        height: auto;
+                        /* Mantém a proporção do logo */
+                        margin-bottom: 10px;
+                        /* Espaçamento abaixo do logo */
+                    }
+        
+                    .footer-dev {
+                        margin: 0;
+                        /* Remove margens do parágrafo */
+                        font-size: 14px;
+                        /* Tamanho da fonte */
+                    }
+        
+                    .footer-logo {
+                        max-width: 150px;
+                        /* Largura máxima do logo */
+                        height: auto;
+                        /* Mantém a proporção do logo */
+                        margin-bottom: 10px;
+                        /* Espaçamento abaixo do logo */
+                    }
+        
+                    .footer-dev a:hover {
+                        text-decoration: underline;
+                        /* Adiciona sublinhado ao passar o mouse */
+                    }
+        
+        
+                    .offcanvas-header {
+                        justify-content: center;
+                        /* Centraliza o conteúdo no cabeçalho */
+                    }
+        
+                    .offcanvas-body a {
+                        text-align: center;
+                        /* Centraliza os links */
+                        color: #343a40;
+                        /* Cor do texto */
+                    }
+        
+                    .offcanvas-body a:hover {
+                        background-color: #e9ecef;
+                        /* Cor ao passar o mouse */
+                    }
+        </style>
+        
+        <style>
+            .sidebar {
+                        position: fixed;
+                        top: 0;
+                        left: -200px;
+                        /* Inicialmente fora da tela */
+                        height: 100%;
+                        width: 250px;
+                        background-color: #f8f9fa;
+                        /* Cor de fundo da barra */
+                        border-right: 1px solid var(--secondary-color);
+                        z-index: 1000;
+                        transition: left 0.3s ease;
+                        /* Transição suave */
+                        display: flex;
+                        /* Usar flexbox */
+                        flex-direction: column;
+                        /* Direção vertical */
+                        justify-content: space-between;
+                        /* Espaçamento igual entre os itens */
+                    }
+        
+        
+        
+                    .sidebar.show {
+                        left: 0;
+                        /* Move para a posição visível */
+                    }
+        
+                    .sidebar a {
+                        display: block;
+                        padding: 15px;
+                        color: var(--secondary-color);
+                        /* Cor do texto */
+                        text-decoration: none;
+                        /* Divisores entre os itens */
+                    }
+        
+                    .sidebar a:hover {
+                        background-color: #e9ecef;
+                        /* Cor ao passar o mouse */
+                    }
+        
+                    .sidebar .arrow {
+                        text-align: center;
+                        padding: 6px;
+                        font-size: 14px;
+                        color: var(--secondary-color);
+                        /* Cor da seta */
+                        cursor: pointer;
+                        /* Cursor de ponteiro */
+                        margin: auto;
+                        /* Centraliza a seta verticalmente */
+                    }
+        
+                    .content {
+                        margin-left: 50px;
+                        /* Margem para o conteúdo principal */
+                        transition: margin-left 0.3s ease;
+                        /* Transição suave */
+                    }
+        
+                    .content.shift {
+                        margin-left: 250px;
+                        /* Margem para o conteúdo quando a barra lateral estiver visível */
+                    }
+        
+                    .toggle-btn {
+                        position: fixed;
+                        top: 20px;
+                        left: 20px;
+                        z-index: 1001;
+                        /* Acima da barra lateral */
+                        background-color: #007bff;
+                        color: white;
+                        border: none;
+                        padding: 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+        
+                    /* Media query para esconder a sidebar em telas menores que 576px */
+                    @media (max-width: 576px) {
+                        .sidebar {
+                            display: none;
+                            /* Esconder a sidebar */
+                        }
+        
+                        .content {
+                            margin-left: 0px;
+                            /* Margem para o conteúdo principal */
+                            transition: margin-left 0.3s ease;
+                            /* Transição suave */
+                        }
+                    }
+        </style>
+        
+        
+        <div class="sidebar" id="sidebar">
+            <div class="row justify-content-center align-items-center" style="height: 100%;">
+                <div class="col-auto">
+                    <div class="d-flex flex-column" style="height: 100%;">
+                        <a href="#sobremim">Sobre mim</a>
+                        <a href="#experiencia">Experiência</a>
+                        <a href="#formacao">Formação Acadêmica</a>
+                        <a href="#premios">Prêmios</a>
+                        <a href="#certificados">Certificados</a>
+                        <a href="#videos">Vídeos</a>
+                        <a href="#recomendacoes">Recomendações</a>
+                        <a href="#projetos">Projetos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+                <div class="col-auto h-100 d-flex justify-content-center">
+                    <i class="arrow fas fa-chevron-right fa-xs" id="toggleSidebar"></i>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const toggleSidebar = document.getElementById('toggleSidebar');
+                    const sidebar = document.getElementById('sidebar');
+                    const content = document.getElementById('content');
+                
+                    toggleSidebar.addEventListener('click', () => {
+                        sidebar.classList.toggle('show');
+                        content.classList.toggle('shift');
+                        toggleSidebar.querySelector('i').classList.toggle('fa-chevron-right');
+                        toggleSidebar.querySelector('i').classList.toggle('fa-chevron-left');
+                    });
+                
+                    document.addEventListener('click', (event) => {
+                        // Verifica se o clique foi fora da barra lateral e do botão
+                        if (!sidebar.contains(event.target) && !toggleSidebar.contains(event.target)) {
+                            // Fecha a barra lateral se estiver visível
+                            if (sidebar.classList.contains('show')) {
+                                sidebar.classList.remove('show');
+                                content.classList.remove('shift');
+                                toggleSidebar.querySelector('i').classList.add('fa-chevron-right');
+                                toggleSidebar.querySelector('i').classList.remove('fa-chevron-left');
+                            }
+                        }
+                    });
+        </script>
+        
+        
+        <div class="content" id="content">
+        
+            <div class="container-fluid sticky-top px-5 py-3 bg-light" style="z-index: 99; top: 0;">
+                <div class="d-flex justify-content-between pb-3">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col">
+                            <picture>
+                                <source srcset="./assets/svg/Logo.svg" type="image/svg+xml" />
+                                <img src="./assets/svg/Logo.svg" class="img-fluid" alt="Logo da Marca" />
+                            </picture>
+                        </div>
+                        <div class="col-auto">
+                            <h2 class="h5 fw-normal" style="color: #2e528e;">Thiago Cicogna</h2>
+                        </div>
+                    </div>
+        
+                    <!-- Dropdown para selecionar o idioma com ícone de seta no lado esquerdo -->
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-nightblue dropdown-toggle rounded-3" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-chevron-left fa-xs"></i> PT
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" id="lang-pt">Português</a></li>
+                            <li><a class="dropdown-item" href="#" id="lang-en">English</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <section id="sobremim" class="container my-5">
+        
+        
+        
+                <div class="row justify-content-between align-items-center g-2">
+                    <div class="col-12 col-xl-6">
+                        <div class="image-container">
+                            <img src="./assets/jpg/banner_lkd.jpg" alt="Imagem de fundo" class="img-fluid rounded-4">
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-5">
+                        <div class="mt-3">
+                            <h3 data-lang-pt="Sobre mim" data-lang-en="About Me" class="h5 my-3">Sobre mim</h3>
+                            <p data-lang-html-pt="<strong>Doutorado em dinâmica estrutural.</strong> <br> Experiência de campo como engenheiro de manutenção na LATAM MRO (estruturas) e engenheiro de desenvolvimento de produtos na EMBRAER." data-lang-html-en="<strong>PhD in structural dynamics.</strong> <br> Field experience as a maintenance engineer at LATAM MRO (structures) and a product development engineer at EMBRAER."
+                            class="fw-small">
+                                <strong>Doutorado em dinâmica estrutural.</strong>
+                                <br> Experiência de campo como engenheiro de manutenção na LATAM MRO (estruturas) e engenheiro de desenvolvimento de produtos na EMBRAER.
+                            </p>
+        
+        
+                            <p class="btm_bar" data-lang-html-pt="<strong>Especialidades:</strong> Revisão, avaliação e determinação de disposições para identificar" data-lang-html-en="<strong>Specialties:</strong> Review, evaluation, and determination of provisions to identify">
+                                <strong>Especialidades:</strong> Revisão, avaliação e determinação de disposições para identificar
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        
+            </section>
+        
+            <section id="experiencia" class="position-relative">
+                <div class="container">
+                    <h3 data-lang-pt="Experiência" data-lang-en="Experience" class="h5 my-5">Experiência</h3>
+                </div>
+                <div class="py-3 px-5 postion-relative">
+                    <div class="row flex-row flex-nowrap overflow-auto pb-5 scroll-container container-custom " style="white-space: nowrap;">
+                        <!-- Experiência 1 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/ifsp-2.jpg" class="img-fluid rounded-3" alt="IFSP logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Professor Associado" data-lang-html-en="Associate Professor">Professor Associado</h5>
+                                    <small>(IFSP) - Tempo Integral</small>
+                                    <small class="d-block text-muted" data-lang-html-pt="São Carlos Area, Brasil" data-lang-html-en="São Carlos Area, Brazil">São Carlos Area, Brasil</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">set de 2014 - o momento · 10 anos 1 mês</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 2 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/theavsourcegroup.jpg" class="img-fluid rounded-3" alt="Avsource Group logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Auditoria de Registros de Aeronaves" data-lang-html-en="Aircraft Records Audit">Auditoria de Registros de Aeronaves
+                                            </h5>
+                                    <small>The Avsource Group, <br>Brasil</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">dez de 2016 - jul de 2019 · 2 anos 8 meses</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 3 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/zyon.jpg" class="img-fluid rounded-3" alt="Zyon Aviation logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Auditoria de Registros de Aeronaves" data-lang-html-en="Aircraft Records Audit">Auditoria de Registros de Aeronaves
+                                            </h5>
+                                    <small>Zyon Aviation Services <br>Mogi das Cruzes, Brasil</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">dez de 2015 - jan de 2016 · 2 meses</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 4 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/embraer.jpg" class="img-fluid rounded-3" alt="Embraer logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Engenheiro de Desenvolvimento de Produto" data-lang-html-en="Product Development Engineer">Engenheiro de Desenvolvimento
+                                                de
+                                                Produto</h5>
+                                    <small>Embraer, <br>Gavião Peixoto (GPX)</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">fev de 2012 - set de 2014 · 2 anos 8 meses</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 5 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/unip.jpg" class="img-fluid rounded-3" alt="UNIP logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Professor" data-lang-html-en="Professor">
+                                                Professor</h5>
+                                    <small>UNIP <br>Araraquara, Brasil</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">ago de 2008 - jul de 2012 · 4 anos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 6 -->
+                        <div class="col right-line">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/latam.jpg" class="img-fluid rounded-3" alt="TAM logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Engenheiro Estrutural" data-lang-html-en="Structural Engineer">Engenheiro Estrutural</h5>
+                                    <small>TAM, TAM MRO</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">2008 - fev de 2012 · 4 anos 2 meses</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Experiência 7 -->
+                        <div class="col">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <!-- Logo -->
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/whirlpool.jpg" class="img-fluid rounded-3" alt="Whirlpool logo" style="max-width: 60px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Estagiário: Engenharia de Produtos" data-lang-html-en="Trainee: Product Engineering">Estagiário: Engenharia de
+                                                Produtos
+                                            </h5>
+                                    <small>Whirlpool Corporation<br> Rio Claro Area, Brasil</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted">fev de 2003 - jun de 2003 · 5 meses</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                    </div>
+        
+                </div>
+        
+            </section>
+        
+            <hr>
+        
+            <section id="formacao" class="position-relative">
+                <div class="container">
+                    <h3 data-lang-pt="Formação Acadêmica" data-lang-en="Academic Training" class="h5 my-5">Formação
+                                Acadêmica</h3>
+                </div>
+        
+                <div class="container-fluid px-4">
+                    <div class="row justify-content-center align-items-top g-5">
+        
+                        <div class="col-12 col-md-6 col-xxl-3">
+                            <div class="d-flex flex-row">
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/usp.jpg" class="img-fluid rounded-5" alt="Universidade de São Paulo logo" style="max-width: 90px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Universidade de São Paulo" data-lang-html-en="University of São Paulo">Universidade de São Paulo</h5>
+                                    <small data-lang-html-pt="Doutorado, Dinâmica Estrutural" data-lang-html-en="Doctorate, Structural Dynamics">Doutorado, Dinâmica
+                                                Estrutural</small>
+                                    <div class="mt-1">
+                                        <small data-lang-html-pt="Intercâmbio Internacional: 'Desenvolvimento de um Sensor Rotacional Baseado em Piezocerâmico Bimorfo Aplicado a Estruturas de Placas - Conservatoire National des Arts et Métiers (CNAM-Paris/França)" data-lang-html-en="International interchange: 'Development of a Rotational Sensor Based in Piezoceramic Bimorph Applied to Plate Structures - Conservatoire National des Arts et Métiers (CNAM-Paris/France)'"
+                                        class="text-muted">
+                                                    Intercâmbio Internacional: 'Desenvolvimento de um Sensor Rotacional Baseado
+                                                    em
+                                                    Piezocerâmico Bimorfo Aplicado a Estruturas de Placas - Conservatoire
+                                                    National
+                                                    des Arts et Métiers (CNAM-Paris/França)'
+                                                </small>
+                                        <br>
+                                        <small class="text-muted" data-lang-html-pt="Período: 1 de setembro a 28 de novembro" data-lang-html-en="Period: September 1st to November 28th">Período: 1 de
+                                                    setembro a 28 de novembro</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 col-md-6 col-xxl-3">
+                            <div class="d-flex flex-row">
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/ifsp.jpg" class="img-fluid rounded-5" alt="Instituto Federal de São Paulo logo" style="max-width: 90px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP" data-lang-html-en="Federal Institute of Education, Science and Technology of São Paulo - IFSP">
+                                                Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - IFSP</h5>
+                                    <small data-lang-html-pt="Tecnólogo, Análise e Desenvolvimento de Sistemas" data-lang-html-en="Technology, System Analysis and Development">Tecnólogo,
+                                                Análise e
+                                                Desenvolvimento de Sistemas</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted" data-lang-html-pt="O Tecnólogo em Análise e Desenvolvimento de Sistemas projeta, desenvolve e mantém sistemas de informação, coordena equipes de software e fornece consultoria técnica, considerando fatores éticos, legais e ambientais."
+                                        data-lang-html-en="The Technologist in Systems Analysis and Development designs, develops, and maintains information systems, coordinates software teams, and provides technical consulting, considering ethical, legal, and environmental factors.">
+                                                    O Tecnólogo em Análise e Desenvolvimento de Sistemas projeta, desenvolve e
+                                                    mantém sistemas de informação, coordena equipes de software e fornece
+                                                    consultoria técnica, considerando fatores éticos, legais e ambientais.
+                                                </small>
+                                        <br>
+                                        <small class="text-muted" data-lang-html-pt="2019 - 2021" data-lang-html-en="2019 - 2021">2019 - 2021</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 col-md-6 col-xxl-3">
+                            <div class="d-flex flex-row">
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/fgv.jpg" class="img-fluid rounded-5" alt="Fundação Getulio Vargas logo" style="max-width: 90px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Fundação Getulio Vargas" data-lang-html-en="Getulio Vargas Foundation">Fundação Getulio Vargas</h5>
+                                    <small data-lang-html-pt="Tecnólogo, Análise e Desenvolvimento de Sistemas" data-lang-html-en="Technology, System Analysis and Development">Tecnólogo,
+                                                Análise e
+                                                Desenvolvimento de Sistemas</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted" data-lang-html-pt="2010 - 2012" data-lang-html-en="2010 - 2012">2010 - 2012</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-12 col-md-6 col-xxl-3">
+                            <div class="d-flex flex-row">
+                                <div class="me-3">
+                                    <img src="./assets/jpg/logo/usp.jpg" class="img-fluid rounded-5" alt="Universidade de São Paulo logo" style="max-width: 90px;">
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <h5 class="h6 mb-1" data-lang-html-pt="Universidade de São Paulo" data-lang-html-en="University of São Paulo">Universidade de São Paulo</h5>
+                                    <small data-lang-html-pt="Engenheiro Mecânico, Aeronáutica e Ciência da Computação" data-lang-html-en="Mechanical Engineer, Aeronautical and Computer Science">Engenheiro
+                                                Mecânico, Aeronáutica e Ciência da Computação</small>
+                                    <div class="mt-1">
+                                        <small class="text-muted" data-lang-html-pt="1999 - 2003" data-lang-html-en="1999 - 2003">1999 - 2003</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </section>
+        
+        
+            <style>
+                #award-selector {
+                            display: none;
+                            /* Esconde o menu por padrão */
+                        }
+        
+                        @media (max-width: 375px) {
+                            #award-selector {
+                                display: block;
+                                /* Exibe o menu quando a tela é menor que 375px */
+                            }
+        
+                            .timeline {
+                                display: none;
+                                /* Esconde a linha do tempo */
+                            }
+                        }
+        
+                        @media (min-width: 376px) {
+                            #award-selector {
+                                display: none;
+                                /* Esconde o menu em telas maiores */
+                            }
+        
+                            .timeline {
+                                display: flex;
+                                /* Exibe a linha do tempo */
+                            }
+                        }
+        
+                        .award-card {
+                            background-color: var(--primary-color-opac);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 20rem;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            /* Centraliza o conteúdo verticalmente */
+                        }
+        
+                        /* Adicionando o ícone da planta ao redor do card */
+                        .award-card::before,
+                        .award-card::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-30%);
+                            width: 90px;
+                            height: 250px;
+                            background-image: url('./assets/svg/planta.svg');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+        
+                        .award-card::before {
+                            left: -40px;
+                        }
+        
+                        .award-card::after {
+                            right: -40px;
+                            transform: translateY(-30%) rotateY(180deg);
+                        }
+        
+                        .award-icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: var(--secondary-color);
+                            border-radius: 50%;
+                            width: 100px;
+                            height: 100px;
+                            margin: 0 auto;
+                        }
+        
+                        .award-icon i {
+                            font-size: 48px;
+                            color: white;
+                        }
+        
+                        .award-content {
+                            margin-left: 20px;
+                        }
+        
+                        .award-content h3 {
+                            margin: 0;
+                            font-size: 24px;
+                        }
+        
+                        .award-content p {
+                            margin: 5px 0;
+                            font-size: 14px;
+                        }
+        
+                        .award-content .year {
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #d3dce6;
+                        }
+        
+                        .award-content .description {
+                            margin-top: 10px;
+                            font-size: 14px;
+                        }
+        
+                        @media (max-width: 860px) {
+                            .award-card {
+                                background-color: transparent;
+                            }
+        
+                            .award-card::before,
+                            .award-card::after {
+                                display: none;
+                                /* Esconde os ícones da planta em telas menores */
+                            }
+                        }
+        
+                        .titulo-barra::after {
+                            content: '';
+                            display: block;
+                            margin: 1rem 0;
+                            width: 40px;
+                            height: 3px;
+                            background-color: white;
+                        }
+            </style>
+        
+            <section id="premios" style="background-color: var(--secondary-color); color: var(--primary-color);">
+                <div class="container py-3 mt-5">
+                    <h3 data-lang-pt="Prêmios" data-lang-en="Awards" class="h5 my-5 titulo-barra">Prêmios</h3>
+                </div>
+        
+                <div class="d-sm-none mb-3">
+                    <select class="form-select" id="yearSelect" onchange="setActiveYear(this.value)">
+                        <option value="" disabled selected>Escolha um ano</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2010">2010</option>
+                    </select>
+                </div>
+        
+                <section class="timeline container px-3 px-sm-0">
+                    <div class="timeline-item" onclick="setActive(this, 'content-2002')">
+                        <div class="year">2002</div>
+                        <div class="circle">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>USP</span>
+                    </div>
+                    <div class="timeline-item" onclick="setActive(this, 'content-2003')">
+                        <div class="year">2003</div>
+                        <div class="circle">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>USP</span>
+                    </div>
+                    <div class="timeline-item" onclick="setActive(this, 'content-2005')">
+                        <div class="year">2005</div>
+                        <div class="circle">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>USP</span>
+                    </div>
+                    <div class="timeline-item" onclick="setActive(this, 'content-2006')">
+                        <div class="year">2006</div>
+                        <div class="circle">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>USP</span>
+                    </div>
+                    <div class="timeline-item" onclick="setActive(this, 'content-2010')">
+                        <div class="year">2010</div>
+                        <div class="circle">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>TAM</span>
+                    </div>
+                </section>
+        
+                <div class="container">
+                    <div id="content-2002" class="content-tab active">
+                        <div class="container py-5">
+                            <div class="row justify-content-center award-card">
+                                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center">
+                                    <div class="award-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="award-content">
+                                        <h3 data-lang-pt="Menção Honrosa no X SIICUSP" data-lang-en="Honors Mention at X SIICUSP">Menção Honrosa no X SIICUSP</h3>
+                                        <p class="year">USP - 2002</p>
+                                        <p class="description" data-lang-pt="Concedido(s) por Universidade de São Paulo - nov de 2002" data-lang-en="Granted by University of São Paulo - Nov 2002">Concedido(s) por Universidade de São Paulo - nov de 2002</p>
+                                        <p class="description" data-lang-pt="Simpósio Internacional de Iniciação Científica - Pesquisa científica de graduação em dinâmica estrutural. Prêmio: intercâmbio internacional com a Ohio State University e a State University of New Jersey – Rutgers (10 dias)."
+                                        data-lang-en="International Symposium of Scientific Initiation - Undergraduate scientific research in structural dynamics. Award: International interchange with The Ohio State University and The State University of New Jersey – Rutgers (10 days).">
+                                            Simpósio Internacional de Iniciação Científica - Pesquisa científica de graduação em dinâmica estrutural. Prêmio: intercâmbio internacional com a Ohio State University e a State University of New Jersey – Rutgers (10 dias).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="content-2003" class="content-tab">
+                        <div class="container py-5">
+                            <div class="row justify-content-center award-card">
+                                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center">
+                                    <div class="award-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="award-content">
+                                        <h3 data-lang-pt="Menção Honrosa no XI SIICUSP" data-lang-en="Honors Mention at XI SIICUSP">Menção Honrosa no XI SIICUSP
+                                                </h3>
+                                        <p class="year">USP - 2003</p>
+                                        <p class="description" data-lang-pt="Concedido(s) por Universidade de São Paulo - out de 2003" data-lang-en="Granted by University of São Paulo - Oct 2003">Concedido(s) por Universidade de São Paulo - out de 2003</p>
+                                        <p class="description" data-lang-pt="Simpósio Internacional de Iniciação Científica - Pesquisa científica de graduação em dinâmica estrutural." data-lang-en="International Symposium of Scientific Initiation - Undergraduate scientific research in structural dynamics.">
+                                            Simpósio Internacional de Iniciação Científica - Pesquisa científica de graduação em dinâmica estrutural.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="content-2005" class="content-tab">
+                        <div class="container py-5">
+                            <div class="row justify-content-center award-card">
+                                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center">
+                                    <div class="award-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="award-content">
+                                        <h3 data-lang-pt="Campeonato Brasileiro: VII Competição de Aerodesign SAE Brasil" data-lang-en="Brazilian Championship: VII SAE Brazil Aerodesign Competition">
+                                                    Campeonato Brasileiro: VII Competição de Aerodesign SAE Brasil</h3>
+                                        <p class="year">SAE Brasil - 2005</p>
+                                        <p class="description" data-lang-pt="Concedido(s) por SAE Brasil - jun de 2005" data-lang-en="Granted by SAE Brazil - Jun 2005">Concedido(s) por SAE Brasil - jun de 2005</p>
+                                        <p class="description" data-lang-pt="Membro da equipe responsável pela análise estrutural (Classe Aberta)." data-lang-en="Member of the team responsible for structural analysis (Open Class).">
+                                            Membro da equipe responsável pela análise estrutural (Classe Aberta).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="content-2006" class="content-tab">
+                        <div class="container py-5">
+                            <div class="row justify-content-center award-card">
+                                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center">
+                                    <div class="award-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="award-content">
+                                        <h3 data-lang-pt="Campeonato Mundial: Competição SAE Aerodesign Leste" data-lang-en="World Championship: SAE East Aerodesign Competition">
+                                                    Campeonato
+                                                    Mundial: Competição SAE Aerodesign Leste</h3>
+                                        <p class="year">SAE - 2006</p>
+                                        <p class="description" data-lang-pt="Concedido(s) por SAE - abr de 2006" data-lang-en="Granted by SAE - Apr 2006">Concedido(s) por SAE - abr de 2006
+                                        </p>
+                                        <p class="description" data-lang-pt="Membro da equipe responsável pela análise estrutural e apresentação oral do projeto (Classe Aberta)." data-lang-en="Member of the team responsible for structural analysis and oral presentation of the project (Open Class).">
+                                            Membro da equipe responsável pela análise estrutural e apresentação oral do projeto (Classe Aberta).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="content-2010" class="content-tab">
+                        <div class="container py-5">
+                            <div class="row justify-content-center award-card">
+                                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center">
+                                    <div class="award-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="award-content">
+                                        <h3 data-lang-pt="Destaque do Mês" data-lang-en="Highlight of the Month">
+                                                    Destaque do
+                                                    Mês</h3>
+                                        <p class="year">TAM MRO - 2010</p>
+                                        <p class="description" data-lang-pt="Concedido(s) por TAM MRO · fev de 2010" data-lang-en="Granted by TAM MRO · Feb 2010">Concedido(s) por TAM MRO · fev de 2010
+                                        </p>
+                                        <p class="description" data-lang-pt="Desenvolvimento de software de banco de dados para atividades de engenharia de manutenção." data-lang-en="Development of database software for maintenance engineering activities.">
+                                            Desenvolvimento de software de banco de dados para atividades de engenharia de manutenção.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <script>
+                function setActiveYear(year) {
+                            const allTabs = document.querySelectorAll('.content-tab');
+                            const selectedTab = document.getElementById(`content-${year}`);
+                            allTabs.forEach(tab => {
+                                tab.classList.remove('active');
+                            });
+                            if (selectedTab) {
+                                selectedTab.classList.add('active');
+                            }
+                        }
+        
+                        function setActive(element, contentId) {
+                            const allItems = document.querySelectorAll('.timeline-item');
+                            const allTabs = document.querySelectorAll('.content-tab');
+        
+                            allItems.forEach(item => {
+                                item.classList.remove('active');
+                            });
+                            element.classList.add('active');
+        
+                            allTabs.forEach(tab => {
+                                tab.classList.remove('active');
+                            });
+                            document.getElementById(contentId).classList.add('active');
+                        }
+            </script>
+        
+        
+        
+        
+        
+        
+            <section id="certificados" class="certificados pb-4">
+                <div class="container">
+                    <h3 class="h5 titulo-barra" data-lang-pt="Certificados" data-lang-en="Certificates">Certificados
+                            </h3>
+                </div>
+                <div class="certificados__container scroll-container">
+                    <div class="certificados__card">
+                        <div class="certificados__card-body">
+                            <h5 class="certificados__card-title" data-lang-pt="Lean Seis Sigma Cinturão Amarelo" data-lang-en="Lean Six Sigma Yellow Belt">Lean Seis Sigma<br>Yellow Belt</h5>
+                            <p class="certificados__card-text" data-lang-pt="FM2S Educação e Consultoria" data-lang-en="FM2S Education and Consulting">FM2S Educação e Consultoria</p>
+                            <p class="certificados__card-text"><small data-lang-pt="Verificação emitida em jun de 2022" data-lang-en="Verification issued in Jun 2022">Verificação emitida em jun de
+                                            2022</small></p>
+                            <p class="certificados__card-text"><small data-lang-pt="Código da credencial 105539" data-lang-en="Credential Code 105539">Código da credencial 105539</small></p>
+                        </div>
+                    </div>
+                    <div class="certificados__card">
+                        <div class="certificados__card-body">
+                            <h5 class="certificados__card-title" data-lang-pt="Curso de Registros Técnicos" data-lang-en="Technical Records Course">Technical Records Course</h5>
+                            <p class="certificados__card-text" data-lang-pt="IALTA - Associação Internacional de Treinamento de Arrendamento de Aviação" data-lang-en="IALTA - International Aviation Lease Training Association">IALTA - International Aviation Lease Training Association</p>
+                            <p class="certificados__card-text"><small data-lang-pt="Verificação emitida em jun de 2022" data-lang-en="Verification issued in Jun 2022">Verificação emitida em jun de
+                                            2022</small></p>
+                            <p class="certificados__card-text"><small data-lang-pt="Código da credencial 818-165-514-9717" data-lang-en="Credential Code 818-165-514-9717">Código da credencial
+                                            818-165-514-9717</small></p>
+                        </div>
+                    </div>
+                    <div class="certificados__card">
+                        <div class="certificados__card-body">
+                            <h5 class="certificados__card-title" data-lang-pt="Produtividade e Gestão do Tempo" data-lang-en="Productivity and Time Management">Produtividade e Gestão do Tempo</h5>
+                            <p class="certificados__card-text" data-lang-pt="Escola Conquer" data-lang-en="Conquer School">
+                                Escola Conquer
+                            </p>
+                            <p class="certificados__card-text"><small data-lang-pt="Verificação emitida em jan de 2022" data-lang-en="Verification issued in Jan 2022">Verificação emitida em jan de
+                                            2022</small></p>
+                        </div>
+                    </div>
+                    <div class="certificados__card">
+                        <div class="certificados__card-body">
+                            <h5 class="certificados__card-title" data-lang-pt="Curso de Estruturas / Chapas Metálicas" data-lang-en="Structures / Sheetmetal Course">Structures / Sheetmetal Course</h5>
+                            <p class="certificados__card-text" data-lang-pt="IALTA - Associação Internacional de Treinamento de Arrendamento de Aviação" data-lang-en="IALTA - International Aviation Lease Training Association">IALTA - International Aviation Lease Training Association</p>
+                            <p class="certificados__card-text"><small data-lang-pt="Verificação emitida em mai de 2021" data-lang-en="Verification issued in May 2021">Verificação emitida em mai de
+                                            2021</small></p>
+                            <p class="certificados__card-text"><small data-lang-pt="Código da credencial 818-162-017-8829" data-lang-en="Credential Code 818-162-017-8829">Código da credencial
+                                            818-162-017-8829</small></p>
+                        </div>
+                    </div>
+                    <div class="certificados__card">
+                        <div class="certificados__card-body">
+                            <h5 class="certificados__card-title" data-lang-pt="Introdução ao Arrendamento de Aeronaves" data-lang-en="Introduction to Aviation Leasing">Introduction to Aviation Leasing</h5>
+                            <p class="certificados__card-text" data-lang-pt="IALTA - Associação Internacional de Treinamento de Arrendamento de Aviação" data-lang-en="IALTA - International Aviation Lease Training Association">IALTA - International Aviation Lease Training Association</p>
+                            <p class="certificados__card-text"><small data-lang-pt="Verificação emitida em abr de 2021" data-lang-en="Verification issued in Apr 2021">Verificação emitida em abr de
+                                            2021</small></p>
+                            <p class="certificados__card-text"><small data-lang-pt="Código da credencial 818-161-848-5229" data-lang-en="Credential Code 818-161-848-5229">Código da credencial
+                                            818-161-848-5229</small></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        
+        
+            <style>
+                .custom-profile-banner {
+                            position: relative;
+                            background-image: url('./assets/jpg/banner_yt.jpg');
+                            background-size: cover;
+                            background-position: center;
+                            width: 100%;
+                            height: 150px;
+                            border-radius: 10px;
+                            margin-bottom: 50px;
+                        }
+        
+                        .custom-profile-wrapper {
+                            display: flex;
+                            align-items: center;
+                            /* Alinha o conteúdo no centro verticalmente */
+                            justify-content: space-between;
+                            position: relative;
+                            /* Adicionado para permitir a sobreposição */
+                            margin-top: -70px;
+                            /* Ajusta a posição do wrapper */
+                            padding: 20px;
+                            /* Padding opcional para espaço adicional */
+                        }
+        
+                        .custom-profile-picture {
+                            width: 140px;
+                            height: 140px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            border: 7px solid white;
+                            position: relative;
+                            /* Para permitir a sobreposição no banner */
+                            top: -70px;
+                            /* Move a imagem para cima, sobrepondo o banner */
+                            margin-right: 15px;
+                            /* Espaçamento à direita da imagem */
+                        }
+        
+                        .custom-profile-info {
+                            margin-left: 10px;
+                            /* Ajuste no espaçamento à esquerda */
+                        }
+        
+                        .custom-videos-section {
+                            display: flex;
+                            overflow-x: auto;
+                            padding: 20px 0;
+                        }
+        
+                        .custom-video-card {
+                            flex: 0 0 auto;
+                            width: 300px;
+                            margin-right: 15px;
+                        }
+        
+                        .custom-video-card img {
+                            width: 100%;
+                            border-radius: 10px;
+                            transition: 1s all;
+                            background-color: var(--secondary-color);
+                        }
+        
+                        .custom-video-card img:hover {
+                            background-color: var(--secondary-color-light);
+                            opacity: 0.5;
+                            transition: 1s all;
+                        }
+        
+                        .custom-video-card p {
+                            text-align: center;
+                            margin-top: 10px;
+                            font-weight: bold;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+        
+                        .custom-video-card p i {
+                            margin-right: 8px;
+                            font-size: 1.2rem;
+                        }
+        
+                        .custom-subscribe-btn {
+                            background-color: var(--secondary-color);
+                            color: white;
+                            padding: 10px 20px;
+                            border-radius: 4rem;
+                            font-weight: bold;
+                            text-decoration: none;
+                            white-space: nowrap;
+                        }
+        
+                        .custom-subscribe-btn:hover {
+                            background-color: var(--secondary-color-light);
+                        }
+        
+                        .video-thumbnail {
+                            width: 100%;
+                            /* Largura total do contêiner */
+                            height: auto;
+                            /* Manter a proporção */
+                            object-fit: cover;
+                            /* Ajustar a imagem sem distorcer */
+                            max-height: 200px;
+                            /* Altura máxima */
+                        }
+            </style>
+        
+            <section class="container" id="videos">
+                <div class="text-center">
+                    <h3 class="h5 my-5" data-lang-en="Videos" data-lang-pt="Vídeos">Vídeos</h3>
+                </div>
+        
+                <!-- Seção do YouTube -->
+                <div class="text-start my-4">
+                    <div class="row justify-content-between align-items-center g-2">
+                        <div class="col">
+                            <img src="./assets/png/youtube.png" alt="YouTube Logo" style="height: 20px; filter: invert(15%) sepia(100%) saturate(200%) hue-rotate(180deg) brightness(90%) contrast(100%);">
+                        </div>
+                        <div class="col-auto">
+                            <div class="ms-auto">
+                                <a href="https://www.youtube.com/@cicogna/?sub_confirmation=1" target="_blank" class="custom-subscribe-btn d-block d-md-none" data-lang-pt="Inscreva-se" data-lang-en="Subscribe">Inscreva-se</a>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+        
+        
+                <!-- Seção de Perfil com Banner -->
+                <div class="custom-profile-banner"></div>
+                <div class="custom-profile-wrapper">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-12 col-md-auto" style="height: 70px;">
+                            <img src="./assets/jpg/profile-yt.jpg" alt="Profile" class="custom-profile-picture img-fluid">
+                        </div>
+                        <div class="col-12 col-md-auto mt-2 mt-md-4">
+                            <div class="custom-profile-info">
+                                <h4 class="fw-bold">Thiago Cicogna</h4>
+                                <p>Un&Manned Aviation Professional</p>
+                                <p><strong>@cicogna</strong></p>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+        
+                    <div class="ms-auto">
+                        <a href="https://www.youtube.com/@cicogna/?sub_confirmation=1" target="_blank" class="custom-subscribe-btn d-none d-md-block" data-lang-pt="Inscreva-se" data-lang-en="Subscribe">Inscreva-se</a>
+                    </div>
+                </div>
+        
+                <!-- Seção de Vídeos (Scroll Horizontal) -->
+                <div class="scroll-container custom-videos-section" id="videos-container">
+        
+                </div>
+        
+                <script>
+                    const videos = [
+                                {
+                                    "videoUrl": "https://www.youtube.com/watch?v=Ig3CtQTrF1M",
+                                    "title": {
+                                        "pt": "Fatores Humanos Manutenção Aeronáutica - Parte 2",
+                                        "en": "Human Factors in Aeronautical Maintenance - Part 2"
+                                    }
+                                },
+                                {
+                                    "videoUrl": "https://www.youtube.com/watch?v=Ig3CtQTrF1M",
+                                    "title": {
+                                        "pt": "Fatores Humanos Manutenção Aeronáutica",
+                                        "en": "Human Factors in Aeronautical Maintenance"
+                                    }
+                                },
+                                {
+                                    "videoUrl": "https://www.youtube.com/watch?v=gegf6o2yaqk",
+                                    "title": {
+                                        "pt": "Gestão do Conhecimento na Manutenção Aeronáutica",
+                                        "en": "Knowledge Management in Aeronautical Maintenance"
+                                    }
+                                },
+                                {
+                                    "videoUrl": "https://www.youtube.com/watch?v=ymXTHyj2UII",
+                                    "title": {
+                                        "pt": "Introdução aos Procedimentos de Limpeza de Aeronaves",
+                                        "en": "Introduction to Aircraft Cleaning Procedures"
+                                    }
+                                }
+                            ];
+        
+                            // Função para extrair o ID do vídeo e gerar a URL da thumbnail
+                            function generateThumbnailUrl(videoUrl) {
+                                const videoIdMatch = videoUrl.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
+                                const videoId = videoIdMatch ? videoIdMatch[1] : null; // Extrai o ID do vídeo
+                                return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : ''; // Retorna a URL da thumbnail
+                            }
+        
+                            // Adiciona a URL da thumbnail ao objeto de vídeo
+                            videos.forEach(video => {
+                                video.imageUrl = generateThumbnailUrl(video.videoUrl);
+                            });
+        
+                            // Função que carrega e exibe os vídeos
+                            function loadVideos() {
+                                const container = document.getElementById('videos-container');
+        
+                                videos.forEach(video => {
+                                    const videoCard = document.createElement('div');
+                                    videoCard.className = 'custom-video-card';
+        
+                                    videoCard.innerHTML = `
+                                    <a href="${video.videoUrl}" target="_blank" class="text-decoration-none">
+                                        <img src="${video.imageUrl}" alt="${video.title.pt}" class="video-thumbnail">
+                                        <p class="text-start">
+                                            <i class="bi bi-play-fill"></i>
+                                            <span data-lang-pt="${video.title.pt}" data-lang-en="${video.title.en}">${video.title.pt}</span>
+                                        </p>
+                                    </a>
+                                `;
+                                    container.appendChild(videoCard);
+                                });
+                            }
+        
+                            // Chama a função para carregar os vídeos
+                            document.addEventListener('DOMContentLoaded', loadVideos);
+                </script>
+        
+        
+        
+                <style>
+                    .recommendations {
+                                background-color: #ffffff;
+                                border-radius: 8px;
+                                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                                padding: 40px;
+                            }
+        
+                            .recommendations__item {
+                                border-radius: 10px;
+                                padding: 20px;
+                                display: flex;
+                                align-items: flex-start;
+                                flex-direction: column;
+                                transition: transform 0.3s ease;
+                            }
+        
+                            .recommendations__item:hover {
+                                transform: scale(1.01);
+                            }
+        
+                            .recommendations__photo {
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 50%;
+                                margin-bottom: 15px;
+                            }
+        
+                            .recommendations__name {
+                                font-weight: bold;
+                                font-size: 1.25rem;
+                                color: var(--secondary-color);
+                                /* Texto com cor secundária */
+                            }
+        
+                            .recommendations__position {
+                                font-size: 0.9rem;
+                                color: #6c757d;
+                            }
+        
+                            .recommendations__text {
+                                font-size: 1rem;
+                                line-height: 1.6;
+                                margin-top: 10px;
+                                color: var(--secondary-color);
+                                /* Texto com cor secundária */
+                            }
+                </style>
+        
+                <hr>
+        
+                <div class="container" id="recomendacoes">
+                    <h3 data-lang-pt="Recomendações" data-lang-en="Recommendations" class="h5 my-5">Recomendações</h3>
+                    <div class="row row-cols-1 row-cols-md-2 g-4" id="recommendationsGrid">
+                        <!-- Comentários serão adicionados aqui -->
+                    </div>
+                </div>
+            </section>
+        
+            <section style="background-color: var(--secondary-color); color: var(--primary-color);" class="container-fluid py-5" id="projetos">
+                <div class="container py-3 mt-2">
+                    <h3 data-lang-pt="Projetos" data-lang-en="Projects" class="h5 my-3 titulo-barra">Projetos</h3>
+        
+                    <div class="row" id="projects-container">
+                        <!-- Os cards serão inseridos aqui pelo JavaScript -->
+                    </div>
+                </div>
+            </section>
+        
+            <script>
+                // Exemplo de dados em JSON
+                        const projectsData = [
+                            {
+                                "author": "Thiago Cicogna",
+                                "author_title": "Associate Professor at Federal Institute of Sao Paulo (IFSP)",
+                                "post_url": "https://lnkd.in/dRg_MH9M",
+                                "post_text": "Try here: https://lnkd.in/dRg_MH9M. Let me know how this can help you...",
+                                "image_url": "./assets/gif/hint-application.gif",
+                                "link": "https://www.linkedin.com/posts/thiago-cicogna-30966b16_try-here-httpslnkdindrgmh9m-let-me-activity-7143597081717374977-O1vg?utm_source=share&utm_medium=member_desktop"
+                            },
+                        ];
+        
+                        document.addEventListener('DOMContentLoaded', function () {
+                            renderProjects();
+                        });
+        
+                        function renderProjects() {
+                            const container = document.getElementById('projects-container');
+        
+                            if (!container) {
+                                console.error('O container de projetos não foi encontrado.');
+                                return;
+                            }
+        
+                            projectsData.forEach(project => {
+                                const cardHTML = `
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-1 position-relative" style="border-radius: 8px;">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="./assets/svg/Logo.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                    <div>
+                                        <h6 class="mb-0">Thiago Cicogna</h6>
+                                        <small class="text-muted">Associate Professor at Federal Institute of Sao Paulo (IFSP)</small>
+                                    </div>
+                                </div>
+                                <p class="card-text">${project.post_text}</p>
+        
+                                <hr>
+                                <picture>
+                                    <source srcset="${project.image_url}" type="image/svg+xml" />
+                                    <img src="${project.image_url}" class="img-fluid" alt="image desc" />
+                                </picture>
+                                <hr>
+                            </div>
+                            
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <button class="btn btn-link text-muted p-0" onclick="window.open('${project.post_url}', '_blank')">
+                                    <i class="bi bi-arrow-bar-up"></i>
+                                </button>
+                            </div>
+        
+                            <div class="card-footer bg-transparent border-top-0">
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-hand-thumbs-up"></i> Gostei
+                                </button>
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-chat-dots"></i> Comentar
+                                </button>
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-share"></i> Compartilhar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                                container.insertAdjacentHTML('beforeend', cardHTML);
+                            });
+                        }
+            </script>
+        
+            <script>
+                function setActive(element, contentId) {
+                            // Remover a classe 'active' de todos os itens da timeline
+                            const items = document.querySelectorAll('.timeline-item');
+                            items.forEach(item => item.classList.remove('active'));
+        
+                            // Adicionar a classe 'active' ao item clicado
+                            element.classList.add('active');
+        
+                            // Esconder todas as abas de conteúdo
+                            const contents = document.querySelectorAll('.content-tab');
+                            contents.forEach(content => content.classList.remove('active'));
+        
+                            // Mostrar o conteúdo correspondente ao item clicado
+                            const activeContent = document.getElementById(contentId);
+                            activeContent.classList.add('active');
+                        }
+            </script>
+        
+            <script>
+                // Seleciona todos os elementos com a classe 'scroll-container'
+                        const scrollContainers = document.querySelectorAll('.scroll-container');
+        
+                        scrollContainers.forEach(scrollContainer => {
+                            let isDown = false;
+                            let startX;
+                            let scrollLeft;
+                            let startY;
+        
+                            scrollContainer.addEventListener('mousedown', (e) => {
+                                isDown = true;
+                                scrollContainer.classList.add('active');
+                                scrollContainer.classList.add('no-select');
+                                startX = e.pageX - scrollContainer.offsetLeft;
+                                scrollLeft = scrollContainer.scrollLeft;
+                                startY = e.pageY;
+                            });
+        
+                            scrollContainer.addEventListener('mousemove', (e) => {
+                                if (!isDown) return;
+        
+                                const x = e.pageX - scrollContainer.offsetLeft;
+                                const y = e.pageY - startY;
+                                const walk = (x - startX) * 2;
+        
+                                // Verifique o movimento vertical
+                                if (Math.abs(y) < 10) { // Limite para movimento vertical
+                                    scrollContainer.scrollLeft = scrollLeft - walk;
+                                }
+                            });
+        
+                            scrollContainer.addEventListener('mouseup', () => {
+                                isDown = false;
+                                scrollContainer.classList.remove('active');
+                                scrollContainer.classList.remove('no-select');
+                            });
+        
+                            scrollContainer.addEventListener('mouseleave', () => {
+                                isDown = false;
+                                scrollContainer.classList.remove('active');
+                                scrollContainer.classList.remove('no-select');
+                            });
+        
+                            scrollContainer.addEventListener('wheel', (e) => {
+                                // Evita o comportamento padrão de rolagem vertical
+                                e.preventDefault();
+        
+                                // Adiciona rolagem horizontal com base no movimento da roda do mouse
+                                scrollContainer.scrollLeft += e.deltaY;
+                            });
+                        });
+            </script>
+        
+            <script>
+                // Array de comentários (JSON)
+                        const comments = [
+                            {
+                                name: {
+                                    pt: "Leandro de Oliveira Santos",
+                                    en: "Leandro de Oliveira Santos"
+                                },
+                                position: {
+                                    pt: "Especialista em Manutenção e Engenharia de Aeronáutica",
+                                    en: "Aviation Maintenance and Engineering Specialist"
+                                },
+                                text: {
+                                    pt: "Tive o prazer de trabalhar diretamente com o Thiago por alguns anos e, depois disso, mantive contato próximo e acompanhei seus outros projetos e atividades. Ele tem um grande conhecimento sobre diferentes campos da aviação, bem como uma personalidade muito humilde, permitindo-lhe estar em um modo de constante melhoria, o que o torna um ativo inestimável para qualquer empresa ou projeto. Para aqueles que tiveram qualquer contato com ele, não é preciso dizer que, além de tudo isso, ele é uma ótima pessoa e muito agradável de se conviver.",
+                                    en: "I had the pleasure of working directly with Thiago for a few years and, after that, maintained close contact and followed his other projects and activities. He has great knowledge of different fields of aviation, as well as a very humble personality, allowing him to be in a constant improvement mode, making him an invaluable asset for any company or project. For those who had any contact with him, it goes without saying that besides all that, he is a great human being and a very pleasant person to be around."
+                                }
+                            },
+                            {
+                                name: {
+                                    pt: "Murillo Pelosi",
+                                    en: "Murillo Pelosi"
+                                },
+                                position: {
+                                    pt: "Diretor de Suporte ao Cliente - América Latina e Caribe",
+                                    en: "Customer Support Director - Latin America & Caribbean"
+                                },
+                                text: {
+                                    pt: "Durante a ação de campo, Thiago lidou com situações de grande pressão e obteve bons resultados em todas elas. Ajudou a empresa a projetar ferramentas para apoiar as atividades de engenharia. Ele demonstrou boas habilidades além daquelas necessárias para a função técnica, como planejamento, organização e comprometimento com os objetivos.",
+                                    en: "During the field action, Thiago dealt with situations under great pressure and achieved good results in all of them. He helped the company design tools to support engineering activities. He demonstrated good skills beyond those needed for the technical function, such as planning, organization, and commitment to goals."
+                                }
+                            },
+                            {
+                                name: {
+                                    pt: "Luiz Simoes",
+                                    en: "Luiz Simoes"
+                                },
+                                position: {
+                                    pt: "Aviação | Engenharia | Estruturas de Aeronaves | Manutenção | Qualidade | Gestão | Instrução | Liderança",
+                                    en: "Aviation | Engineering | Aircraft Structures | Maintenance | Quality | Management | Instruction | Leadership"
+                                },
+                                text: {
+                                    pt: "O Dr. Thiago Cicogna é super inteligente, gente boa, responsável, atencioso, humilde, educado e ótimo profissional. Trabalhar com ele é sempre muito prazeroso. Ele tem prazer em nos passar o que sabe, além de ser muito bem humorado.",
+                                    en: "Dr. Thiago Cicogna is super intelligent, kind, responsible, attentive, humble, polite, and an excellent professional. Working with him is always very pleasant. He enjoys sharing his knowledge with us and has a great sense of humor."
+                                }
+                            },
+                            {
+                                name: {
+                                    pt: "Marcos D.",
+                                    en: "Marcos D."
+                                },
+                                position: {
+                                    pt: "Análise de Dados | Engenharia de Confiabilidade | Análise de Falhas | Segurança | Manutenção | Aviação",
+                                    en: "Data Analysis | Reliability Engineering | Failure Analysis | Safety | Maintenance | Aviation"
+                                },
+                                text: {
+                                    pt: "O Thiago é um ótimo professor, conhece muito bem o que faz. E, além de tudo, sabe passar bem a matéria. É organizado e simples na maneira de ensinar.",
+                                    en: "Thiago is a great teacher, knows his stuff very well, and, above all, knows how to convey the material effectively. He is organized and straightforward in his teaching approach."
+                                }
+                            }
+                            // Adicione mais comentários aqui se necessário
+                        ];
+        
+                        // Função para renderizar comentários
+                        function renderComments(lang) {
+                            const grid = document.getElementById('recommendationsGrid');
+                            grid.innerHTML = ''; // Limpa o grid antes de renderizar
+                            comments.forEach(comment => {
+                                const col = document.createElement('div');
+                                col.className = 'col';
+                                col.innerHTML = `
+                        <div class="recommendations__item">
+                            <div class="d-flex justify-content-between align-items-top w-100">
+                                <div class="col-auto">
+                                    <img src="./assets/svg/user.svg" alt="Foto" class="recommendations__photo">
+                                </div>
+                                <div class="col-auto">
+                                    <img src="./assets/png/quotation.png" width="30px" alt="">
+                                </div>
+                            </div>
+                            <div class="recommendations__name">${comment.name[lang]}</div>
+                            <div class="recommendations__position">${comment.position[lang]}</div>
+                            <p class="recommendations__text">${comment.text[lang]}</p>
+                        </div>
+                    `;
+                                grid.appendChild(col);
+                            });
+                        }
+        
+                        // Função para mudar o idioma
+                        function changeLanguage(lang) {
+                            // Atualiza elementos que contêm texto
+                            const textElements = document.querySelectorAll('[data-lang-pt], [data-lang-en]');
+                            textElements.forEach(element => {
+                                element.textContent = element.getAttribute(`data-lang-${lang}`);
+                            });
+        
+                            // Atualiza elementos que contêm HTML
+                            const htmlElements = document.querySelectorAll('[data-lang-html-pt], [data-lang-html-html]');
+                            htmlElements.forEach(element => {
+                                element.innerHTML = element.getAttribute(`data-lang-html-${lang}`);
+                            });
+        
+                            // Renderiza comentários no idioma selecionado
+                            renderComments(lang);
+                        }
+        
+                        // Atualizando o dropdown e os textos ao mudar idioma
+                        document.getElementById('lang-pt').addEventListener('click', function () {
+                            changeLanguage('pt');
+                            document.getElementById('languageDropdown').innerHTML = '<i class="fas fa-chevron-left fa-xs"></i> PT';
+                        });
+        
+                        document.getElementById('lang-en').addEventListener('click', function () {
+                            changeLanguage('en');
+                            document.getElementById('languageDropdown').innerHTML = '<i class="fas fa-chevron-left fa-xs"></i> EN';
+                        });
+        
+                        // Gira o ícone ao abrir/fechar o dropdown
+                        document.getElementById('languageDropdown').addEventListener('click', function () {
+                            const icon = this.querySelector('i');
+                            icon.classList.toggle('rotate-icon');
+                        });
+        
+                        // Renderiza comentários iniciais ao carregar a página
+                        window.onload = function () {
+                            renderComments('pt'); // Renderiza em português por padrão
+                        };
+            </script>
+        
+            <footer class="bg-dark text-light" id="contato">
+                <div class="container p-4 d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="./assets/svg/Logo.svg" alt="Logo da Marca" class="footer-logo img-fluid me-2">
+                    </div>
+                    <a href="https://digoo.dev.br" target="_blank" class="text-light text-decoration-none">
+                        <span data-lang-pt="Desenvolvido por" data-lang-en="Developed by">Desenvolvido por</span>
+                        <span class="text-primary">digoo.dev.br</span>
+                    </a>
+                    <div>
+                        <a href="https://www.linkedin.com/in/thiago-cicogna-30966b16/" target="_blank" class="text-light ms-3">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                            <!-- Ícone do LinkedIn -->
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center p-3" style="background-color: #343a40;">
+                    <p>&copy; 2024<small data-lang-pt=" Todos os direitos reservados." data-lang-en=" All rights reserved."> Todos os direitos reservados.</small></p>
+                </div>
+            </footer>
+        
+        
+        </div>
+
+
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
