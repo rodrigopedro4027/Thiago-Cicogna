@@ -1686,7 +1686,15 @@
                     <div class="row" id="projects-container">
                         <!-- Os cards serão inseridos aqui pelo JavaScript -->
 
-
+                        <div class="col-md-5 mb-4">
+                            <div class="card h-100 border-1 position-relative" style="border-radius: 8px;">
+                                <div class="card-body">
+                                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7237858988304814080"
+                                        height="848" width="504" frameborder="0" allowfullscreen=""
+                                        title="Publicação incorporada"></iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1695,13 +1703,14 @@
                 // Exemplo de dados em JSON
                 const projectsData = [
                     {
-                        "iframe": "<iframe src='https://www.linkedin.com/embed/feed/update/urn:li:share:7143597081033711616' height='608' width='504' frameborder='0' allowfullscreen='' title='Publicação incorporada'></iframe>"
-                    },
-                    {
-                        "iframe": "<iframe src='https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7237858988304814080' height='848' width='504' frameborder='0' allowfullscreen='' title='Publicação incorporada'></iframe>"
+                        "author": "Thiago Cicogna",
+                        "author_title": "Associate Professor at Federal Institute of Sao Paulo (IFSP)",
+                        "post_url": "https://lnkd.in/dRg_MH9M",
+                        "post_text": "Try here: https://lnkd.in/dRg_MH9M. Let me know how this can help you...",
+                        "image_url": "./assets/gif/hint-application.gif",
+                        "link": "https://www.linkedin.com/posts/thiago-cicogna-30966b16_try-here-httpslnkdindrgmh9m-let-me-activity-7143597081717374977-O1vg?utm_source=share&utm_medium=member_desktop"
                     },
                 ];
-
 
                 document.addEventListener('DOMContentLoaded', function () {
                     renderProjects();
@@ -1717,13 +1726,45 @@
 
                     projectsData.forEach(project => {
                         const cardHTML = `
-                        <div class="col-md-5 mb-4">
-                            <div class="card border-1 position-relative" style="border-radius: 8px;">
-                                <div class="card-body">
-                                    ${project.iframe}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-1 position-relative" style="border-radius: 8px;">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="./assets/svg/Logo.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                    <div>
+                                        <h6 class="mb-0">Thiago Cicogna</h6>
+                                        <small class="text-muted">Associate Professor at Federal Institute of Sao Paulo (IFSP)</small>
+                                    </div>
                                 </div>
+                                <p class="card-text">${project.post_text}</p>
+        
+                                <hr>
+                                <picture>
+                                    <source srcset="${project.image_url}" type="image/svg+xml" />
+                                    <img src="${project.image_url}" class="img-fluid" alt="image desc" />
+                                </picture>
+                                <hr>
+                            </div>
+                            
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <button class="btn btn-link text-muted p-0" onclick="window.open('${project.post_url}', '_blank')">
+                                    <i class="bi bi-arrow-bar-up"></i>
+                                </button>
+                            </div>
+        
+                            <div class="card-footer bg-transparent border-top-0">
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-hand-thumbs-up"></i> Gostei
+                                </button>
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-chat-dots"></i> Comentar
+                                </button>
+                                <button class="btn btn-link text-muted" onclick="window.open('${project.link}', '_blank')">
+                                    <i class="bi bi-share"></i> Compartilhar
+                                </button>
                             </div>
                         </div>
+                    </div>
                 `;
                         container.insertAdjacentHTML('beforeend', cardHTML);
                     });
