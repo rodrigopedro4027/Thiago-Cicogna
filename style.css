@@ -222,6 +222,12 @@ body {
     /* Cor ao passar o mouse */
 }
 
+iframe {
+    width: 100%; /* O iframe ocupará 100% da largura do container */
+    height: auto; /* A altura será ajustada automaticamente */
+    aspect-ratio: 2 / 3; /* Mantém a proporção do iframe (ajuste se necessário) */
+    border: 0;
+}
 
 
 /**/

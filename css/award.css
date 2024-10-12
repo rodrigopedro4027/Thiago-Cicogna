@@ -47,7 +47,7 @@
     transform: translateY(-30%);
     width: 90px;
     height: 250px;
-    background-image: url('./assets/svg/planta.svg');
+    background-image: url('../assets/svg/planta.svg');
     background-size: contain;
     background-repeat: no-repeat;
 }
