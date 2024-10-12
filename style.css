@@ -1,0 +1,227 @@
+:root {
+    --primary-color: #f6f9fd;
+    --primary-color-opac: #f4f4f51a;
+    --secondary-color: #2e528e;
+    --secondary-color-opac: #2e518ead;
+    --secondary-color-light: #5570a067;
+
+}
+
+::selection {
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
+
+#scroll-container {
+    overflow-x: hidden;
+    /* Oculta a barra de rolagem horizontal por padrão */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+
+    border: 5px solid transparent;
+    border-radius: 2rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color-light);
+    border: 5px solid transparent;
+    border-radius: 2rem;
+    transition: 1s ease-in;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    border: 5px solid transparent;
+    background-color: var(--secondary-color);
+}
+
+/* Exibe a barra de rolagem ao passar o mouse */
+#scroll-container.show-scroll::-webkit-scrollbar {
+    display: block;
+    /* Mostra a barra de rolagem quando a classe show-scroll é adicionada */
+}
+
+
+.btn:active,
+.btn.active {
+    outline: 2px solid var(--primary-color-opac);
+    background-color: var(--primary-color);
+    color: var(--secondary-color) !important;
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+
+a {
+    color: var(--secondary-color);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+i {
+    cursor: none !important;
+}
+
+/* Estilos gerais */
+body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color) !important;
+    position: relative;
+    z-index: 1;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-toggle i {
+    transition: transform 500ms ease;
+    margin-right: 8px;
+}
+
+.rotate-icon {
+    transform: rotate(90deg);
+}
+
+
+.dropdown-menu {
+    min-width: 5rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btm_bar::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    margin-top: 2rem;
+}
+
+
+.image-container {
+    width: 100%;
+    /* Permite que o contêiner seja responsivo */
+    max-width: 720px;
+    /* Largura máxima desejada */
+    height: auto;
+    /* Altura automática para manter proporções */
+    position: relative;
+    /* Para posicionamento relativo */
+    overflow: hidden;
+    /* Oculta partes da imagem que saem do contêiner */
+}
+
+.image-container img {
+    width: 100%;
+    /* Faz a imagem ocupar toda a largura do contêiner */
+    height: 250px;
+    /* Altura fixa */
+    object-fit: cover;
+    /* Mantém as proporções e cobre o contêiner */
+    position: relative;
+    /* Para um melhor controle de layout */
+}
+
+.btn-outline-nightblue {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn-outline-nightblue:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.right-line {
+    border-right: 2px solid var(--secondary-color);
+}
+
+.no-select {
+    user-select: none;
+    /* Evita a seleção de texto */
+}
+
+
+
+
+/**/
+
+
+
+.footer {
+    background-color: #f8f9fa;
+    /* Cor de fundo do footer */
+    padding: 20px 0;
+    /* Espaçamento em cima e embaixo */
+    text-align: center;
+    /* Centraliza o texto */
+}
+
+.footer-logo {
+    max-width: 150px;
+    /* Largura máxima do logo */
+    height: auto;
+    /* Mantém a proporção do logo */
+    margin-bottom: 10px;
+    /* Espaçamento abaixo do logo */
+}
+
+.footer-dev {
+    margin: 0;
+    /* Remove margens do parágrafo */
+    font-size: 14px;
+    /* Tamanho da fonte */
+}
+
+.footer-logo {
+    max-width: 150px;
+    /* Largura máxima do logo */
+    height: auto;
+    /* Mantém a proporção do logo */
+    margin-bottom: 10px;
+    /* Espaçamento abaixo do logo */
+}
+
+.footer-dev a:hover {
+    text-decoration: underline;
+    /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+.offcanvas-header {
+    justify-content: center;
+    /* Centraliza o conteúdo no cabeçalho */
+}
+
+.offcanvas-body a {
+    text-align: center;
+    /* Centraliza os links */
+    color: #343a40;
+    /* Cor do texto */
+}
+
+.offcanvas-body a:hover {
+    background-color: #e9ecef;
+    /* Cor ao passar o mouse */
+}
+
+
+
+/**/

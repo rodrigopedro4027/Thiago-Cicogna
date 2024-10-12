@@ -1,0 +1,89 @@
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: white;
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.timeline-item .circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.timeline-item i {
+    font-size: 30px;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+}
+
+.timeline-item.active .circle {
+    background-color: var(--secondary-color);
+    -webkit-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+    -moz-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+    box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+}
+
+.timeline-item.active i {
+    color: white;
+}
+
+.timeline-item span {
+    display: block;
+    font-size: 18px;
+}
+
+.year {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.timeline-item:hover .circle {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    -webkit-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+    -moz-box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+    box-shadow: inset 0px 0px 0px 5px rgb(255, 255, 255);
+}
+
+.timeline-item:hover i {
+    color: white;
+}
+
+.content-tab {
+    display: none;
+    padding: 20px;
+    color: #333;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.content-tab.active {
+    display: block;
+}

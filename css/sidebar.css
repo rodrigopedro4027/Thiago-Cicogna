@@ -1,0 +1,94 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    /* Inicialmente fora da tela */
+    height: 100%;
+    width: 250px;
+    background-color: #f8f9fa;
+    /* Cor de fundo da barra */
+    border-right: 1px solid var(--secondary-color);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    /* Transição suave */
+    display: flex;
+    /* Usar flexbox */
+    flex-direction: column;
+    /* Direção vertical */
+    justify-content: space-between;
+    /* Espaçamento igual entre os itens */
+}
+
+
+
+.sidebar.show {
+    left: 0;
+    /* Move para a posição visível */
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: var(--secondary-color);
+    /* Cor do texto */
+    text-decoration: none;
+    /* Divisores entre os itens */
+}
+
+.sidebar a:hover {
+    background-color: #e9ecef;
+    /* Cor ao passar o mouse */
+}
+
+.sidebar .arrow {
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+    color: var(--secondary-color);
+    /* Cor da seta */
+    cursor: pointer;
+    /* Cursor de ponteiro */
+    margin: auto;
+    /* Centraliza a seta verticalmente */
+}
+
+.content {
+    margin-left: 50px;
+    /* Margem para o conteúdo principal */
+    transition: margin-left 0.3s ease;
+    /* Transição suave */
+}
+
+.content.shift {
+    margin-left: 250px;
+    /* Margem para o conteúdo quando a barra lateral estiver visível */
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    /* Acima da barra lateral */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Media query para esconder a sidebar em telas menores que 576px */
+@media (max-width: 576px) {
+    .sidebar {
+        display: none;
+        /* Esconder a sidebar */
+    }
+
+    .content {
+        margin-left: 0px;
+        /* Margem para o conteúdo principal */
+        transition: margin-left 0.3s ease;
+        /* Transição suave */
+    }
+}

@@ -1,0 +1,106 @@
+.custom-profile-banner {
+    position: relative;
+    background-image: url('../assets/jpg/banner_yt.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.custom-profile-wrapper {
+    display: flex;
+    align-items: center;
+    /* Alinha o conteúdo no centro verticalmente */
+    justify-content: space-between;
+    position: relative;
+    /* Adicionado para permitir a sobreposição */
+    margin-top: -70px;
+    /* Ajusta a posição do wrapper */
+    padding: 20px;
+    /* Padding opcional para espaço adicional */
+}
+
+.custom-profile-picture {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 7px solid white;
+    position: relative;
+    /* Para permitir a sobreposição no banner */
+    top: -70px;
+    /* Move a imagem para cima, sobrepondo o banner */
+    margin-right: 15px;
+    /* Espaçamento à direita da imagem */
+}
+
+.custom-profile-info {
+    margin-left: 10px;
+    /* Ajuste no espaçamento à esquerda */
+}
+
+.custom-videos-section {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.custom-video-card {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 15px;
+}
+
+.custom-video-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: 1s all;
+    background-color: var(--secondary-color);
+}
+
+.custom-video-card img:hover {
+    background-color: var(--secondary-color-light);
+    opacity: 0.5;
+    transition: 1s all;
+}
+
+.custom-video-card p {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-video-card p i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.custom-subscribe-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4rem;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.custom-subscribe-btn:hover {
+    background-color: var(--secondary-color-light);
+}
+
+.video-thumbnail {
+    width: 100%;
+    /* Largura total do contêiner */
+    height: auto;
+    /* Manter a proporção */
+    object-fit: cover;
+    /* Ajustar a imagem sem distorcer */
+    max-height: 200px;
+    /* Altura máxima */
+}

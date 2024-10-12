@@ -1,0 +1,124 @@
+#award-selector {
+    display: none;
+    /* Esconde o menu por padrão */
+}
+
+@media (max-width: 375px) {
+    #award-selector {
+        display: block;
+        /* Exibe o menu quando a tela é menor que 375px */
+    }
+
+    .timeline {
+        display: none;
+        /* Esconde a linha do tempo */
+    }
+}
+
+@media (min-width: 376px) {
+    #award-selector {
+        display: none;
+        /* Esconde o menu em telas maiores */
+    }
+
+    .timeline {
+        display: flex;
+        /* Exibe a linha do tempo */
+    }
+}
+
+.award-card {
+    background-color: var(--primary-color-opac);
+    color: white;
+    padding: 20px;
+    border-radius: 20rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* Centraliza o conteúdo verticalmente */
+}
+
+/* Adicionando o ícone da planta ao redor do card */
+.award-card::before,
+.award-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-30%);
+    width: 90px;
+    height: 250px;
+    background-image: url('./assets/svg/planta.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.award-card::before {
+    left: -40px;
+}
+
+.award-card::after {
+    right: -40px;
+    transform: translateY(-30%) rotateY(180deg);
+}
+
+.award-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.award-icon i {
+    font-size: 48px;
+    color: white;
+}
+
+.award-content {
+    margin-left: 20px;
+}
+
+.award-content h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.award-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.award-content .year {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d3dce6;
+}
+
+.award-content .description {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+@media (max-width: 860px) {
+    .award-card {
+        background-color: transparent;
+    }
+
+    .award-card::before,
+    .award-card::after {
+        display: none;
+        /* Esconde os ícones da planta em telas menores */
+    }
+}
+
+.titulo-barra::after {
+    content: '';
+    display: block;
+    margin: 1rem 0;
+    width: 40px;
+    height: 3px;
+    background-color: white;
+}
